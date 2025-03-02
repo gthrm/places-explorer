@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "Развлечения",
+"features": [
+{ "type": "Feature", "properties": { "Name": "BG Smart Wellness Banya", "description": "Баня" }, "geometry": { "type": "Point", "coordinates": [ 20.5099102, 44.6442246, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Studio SVETLO", "description": "фотостудия" }, "geometry": { "type": "Point", "coordinates": [ 20.480092, 44.7996892, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Reflection Photo Studio (za autoportret)", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4702492, 44.8173906, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG VR-IN", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4600332, 44.8105011, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Colizeum\n", "description": "Computer club" }, "geometry": { "type": "Point", "coordinates": [ 19.8471732, 45.2502283, 0.0 ] } }
+]
+}

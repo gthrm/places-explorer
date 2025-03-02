@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Места - Каталог заведений
 
-## Getting Started
+Веб-приложение для просмотра и фильтрации различных заведений, построенное на Next.js и TypeScript.
 
-First, run the development server:
+## Особенности
 
+- 🌍 Отображение заведений из GeoJSON файлов
+- 🔍 Фильтрация по категориям, городам и типам заведений
+- 🔎 Поиск по названию и описанию
+- 📱 Адаптивный дизайн для мобильных устройств и десктопов
+- 🗺️ Интеграция с Google Maps для просмотра местоположения заведений
+
+## Технологии
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- React Context API для управления состоянием
+
+## Установка и запуск
+
+1. Клонируйте репозиторий:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/places-explorer.git
+cd places-explorer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Установите зависимости:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Запустите приложение в режиме разработки:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Откройте [http://localhost:3000](http://localhost:3000) в вашем браузере.
 
-## Learn More
+## Структура данных
 
-To learn more about Next.js, take a look at the following resources:
+Приложение использует GeoJSON файлы из директории `public/data/`. Каждый файл представляет отдельную категорию заведений:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Бар.geojson - Бары и кафе
+- Еда.geojson - Рестораны и заведения общепита
+- Красота.geojson - Салоны красоты
+- Магазины.geojson - Магазины
+- и другие...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Структура проекта
 
-## Deploy on Vercel
+```
+places-explorer/
+├── public/
+│   └── data/           # GeoJSON файлы с данными
+├── src/
+│   ├── app/            # Страницы приложения
+│   ├── components/     # React компоненты
+│   ├── context/        # Context API для управления состоянием
+│   ├── types/          # TypeScript типы
+│   └── utils/          # Вспомогательные функции
+└── ...
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Лицензия
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

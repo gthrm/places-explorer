@@ -1,0 +1,24 @@
+{
+"type": "FeatureCollection",
+"name": "Курсы",
+"features": [
+{ "type": "Feature", "properties": { "Name": "BG Ruski centar za nauku i kulturu", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4608506, 44.8095974, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG O.Studio", "description": "Творческое пространство для детей и взрослых: организация и проведение детских и взрослых дней рождений, корпоративные мастер классы, регулярные творческие занятия для детей 5-13 лет и взрослых." }, "geometry": { "type": "Point", "coordinates": [ 20.3971471, 44.8471093, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Bhoga Yoga", "description": "Yoga" }, "geometry": { "type": "Point", "coordinates": [ 20.470066, 44.7940996, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Школа Сербского Языка JUMI", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.836835, 45.251504, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Школа Сербского Языка JUMI", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4614576, 44.8129312, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Che Design School Belgrade", "description": "Школа Дизайна и Архитектуры" }, "geometry": { "type": "Point", "coordinates": [ 20.4635603, 44.8087477, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Путь художника Пут Уметника", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4134114, 44.8166978, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Solo - ballet & stretching", "description": "https://www.instagram.com/solo_ballet_belgrade" }, "geometry": { "type": "Point", "coordinates": [ 20.4724204, 44.8051055, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Наше Место", "description": "Предоставляют услуги для детей, подростков и взрослых в сфере дополнительного образования, а также проводят досуговые мероприятия от настольных игр до тематических вечеринок" }, "geometry": { "type": "Point", "coordinates": [ 20.4207727, 44.8232886, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Приди в Себя", "description": "антикафе/игротека" }, "geometry": { "type": "Point", "coordinates": [ 19.8432803, 45.2612126, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS iSchool", "description": "Детская школа ISchool" }, "geometry": { "type": "Point", "coordinates": [ 19.835172, 45.25405, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Часть Речи — культурно-образовательный центр", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.845918, 45.2565739, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Dolphin School", "description": "It-школа Dolphin" }, "geometry": { "type": "Point", "coordinates": [ 19.8366959, 45.2514105, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Karakulya", "description": "Студия творчества" }, "geometry": { "type": "Point", "coordinates": [ 19.8351945, 45.2587211, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Serbian language school SmartLab", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8423219, 45.2519359, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Nova Kuča — Русская начальная школа \"Новый дом\"", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8343555, 45.2709318, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Art Most", "description": "Художественная школа" }, "geometry": { "type": "Point", "coordinates": [ 19.849088, 45.256682, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Bananalama", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8368586, 45.2492416, 0.0 ] } }
+]
+}

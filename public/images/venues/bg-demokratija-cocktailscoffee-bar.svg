@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Image Placeholder</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F5F5F5" x="0" y="0" width="800" height="600"></rect>
+        <g transform="translate(250.000000, 150.000000)" fill="#CCCCCC">
+            <path d="M300,0 C300,0 300,300 300,300 C300,300 0,300 0,300 C0,300 0,0 0,0 C0,0 300,0 300,0 Z M270,30 L30,30 L30,270 L270,270 L270,30 Z" fill-rule="nonzero"></path>
+            <circle cx="90" cy="90" r="30"></circle>
+            <path d="M105,180 L195,180 L150,120 L105,180 Z" fill-rule="nonzero"></path>
+            <path d="M30,270 L270,270 L270,180 L225,120 L165,195 L105,150 L30,240 L30,270 Z" fill-rule="nonzero"></path>
+        </g>
+        <text font-family="Arial" font-size="24" font-weight="normal" fill="#999999" text-anchor="middle" x="400" y="450">
+            Изображение недоступно
+        </text>
+    </g>
+</svg>

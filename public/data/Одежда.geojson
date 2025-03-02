@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "Одежда",
+"features": [
+{ "type": "Feature", "properties": { "Name": "BG Axioma", "description": "Магазин одежды" }, "geometry": { "type": "Point", "coordinates": [ 20.4635324, 44.8155218, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Ogledalo Second Hand", "description": "Second Hand" }, "geometry": { "type": "Point", "coordinates": [ 20.4528914, 44.8803529, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG EXPRESS LAUNDRY Perionica Vesa May - Pranje i Peglanje", "description": "Прачечная" }, "geometry": { "type": "Point", "coordinates": [ 20.4531054, 44.8025855, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG ReBoots Clean & Care", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4514565, 44.8020686, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Zduhachi", "description": "Шоурум дизайнерской одежды Zduhaći" }, "geometry": { "type": "Point", "coordinates": [ 19.8499596, 45.2562674, 0.0 ] } }
+]
+}

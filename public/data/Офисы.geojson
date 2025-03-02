@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "Офисы",
+"features": [
+{ "type": "Feature", "properties": { "Name": "BG SvetloSpace ", "description": "Кооворкинг" }, "geometry": { "type": "Point", "coordinates": [ 20.4603366, 44.8187217, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Adaptacija Space", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4702422, 44.8175709, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Music studio “Tsoy center”", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8378471, 45.2525541, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Желтая лампа, клуб по интересам\n", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8323284, 45.250277, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS MAXIMUM", "description": "Maximum, коворкинг и образовательный центр" }, "geometry": { "type": "Point", "coordinates": [ 19.8415398, 45.2507037, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Limun Coworking", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8476151, 45.243842, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "SB Fotokopirnica", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.6600516, 46.1014075, 0.0 ] } }
+]
+}

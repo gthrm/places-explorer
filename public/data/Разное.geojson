@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "Разное",
+"features": [
+{ "type": "Feature", "properties": { "Name": "Белград глазами инженера", "description": "Экскурсии " }, "geometry": { "type": "Point", "coordinates": [ 20.4567929, 44.8174071, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG CITILAB", "description": "Русскоязычная лаборатория и поликлиника" }, "geometry": { "type": "Point", "coordinates": [ 20.4733594, 44.7958783, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Palkin Dental Center", "description": "русско-сербская стоматология" }, "geometry": { "type": "Point", "coordinates": [ 20.4652263, 44.8020347, 0.0 ] } }
+]
+}

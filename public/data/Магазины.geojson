@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "Магазины",
+"features": [
+{ "type": "Feature", "properties": { "Name": "NS SalutSava ", "description": "Магазин керамики SalutSava " }, "geometry": { "type": "Point", "coordinates": [ 19.8486843, 45.255849, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Miracle store", "description": "Магазин подарков и сувениров" }, "geometry": { "type": "Point", "coordinates": [ 19.8253304, 45.2426462, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Белая ворона", "description": "книги на русском языке" }, "geometry": { "type": "Point", "coordinates": [ 19.8402607, 45.2534784, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Cvećara / Flower Shop \"BOTANIKA.RS\"", "description": "цветочный магазин" }, "geometry": { "type": "Point", "coordinates": [ 20.4535647, 44.8162612, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Cvećara She", "description": "Цветочный магазин" }, "geometry": { "type": "Point", "coordinates": [ 20.4793994, 44.8053948, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Лав и Жабац", "description": "Детские книги" }, "geometry": { "type": "Point", "coordinates": [ 20.4558161, 44.821189, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Marfa Flowershop", "description": "цветочный магазин" }, "geometry": { "type": "Point", "coordinates": [ 20.4705453, 44.8222014, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG PROSTO", "description": "Ювелирный" }, "geometry": { "type": "Point", "coordinates": [ 20.4637147, 44.8224028, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Ruska knjižara Bela Vrana (Белая Ворона)\n", "description": "Книжный магазин с русскими книгами" }, "geometry": { "type": "Point", "coordinates": [ 20.4557346, 44.8124671, 0.0 ] } }
+]
+}

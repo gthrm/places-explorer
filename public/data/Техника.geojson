@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "Техника",
+"features": [
+{ "type": "Feature", "properties": { "Name": "SU CAR Rental", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.6876813, 46.1006064, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Ruski servis Fastrestore", "description": "Сервис по ремонту компьютерной и мобильной техники" }, "geometry": { "type": "Point", "coordinates": [ 19.8315894, 45.2625359, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS АРЕНДА АВТО", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.845224, 45.2494949, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS Caravan-Auto", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8490665, 45.2640264, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "NS NEXT AUTO  ", "description": null }, "geometry": { "type": "Point", "coordinates": [ 19.8159502, 45.2414267, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG AM Service - Блок 72", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.3579468, 44.8007769, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG AM Service - Душановац", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4800605, 44.7825784, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG FixLab", "description": "компьютерный сервис" }, "geometry": { "type": "Point", "coordinates": [ 20.4848764, 44.8041245, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG OnWheels", "description": "Прокат самокатов/велосипедов/машин" }, "geometry": { "type": "Point", "coordinates": [ 20.4841806, 44.7845552, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Vroom Autoservice & Rental", "description": "автосервис + аренда" }, "geometry": { "type": "Point", "coordinates": [ 20.3466466, 44.8527336, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG Tres Amigos", "description": "Аренда авто" }, "geometry": { "type": "Point", "coordinates": [ 20.4408975, 44.8110702, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "BG FELO alati", "description": "магазин инструментов" }, "geometry": { "type": "Point", "coordinates": [ 20.391871, 44.8462869, 0.0 ] } }
+]
+}
