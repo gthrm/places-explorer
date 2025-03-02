@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: './places-explorer/package-lock.json'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install dependencies
         working-directory: ./places-explorer
