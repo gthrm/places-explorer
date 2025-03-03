@@ -80,3 +80,80 @@ places-explorer/
 ## Лицензия
 
 MIT
+
+## Настройка базы данных и Telegram бота
+
+### Настройка базы данных PostgreSQL
+
+Для работы проекта требуется PostgreSQL. Вы можете запустить его с помощью Docker:
+
+```bash
+# Запуск PostgreSQL в Docker
+docker-compose up -d
+```
+
+### Миграция данных
+
+Для миграции данных из JSON-файлов в PostgreSQL выполните:
+
+```bash
+# Применение миграций и миграция данных
+npm run migrate:full
+```
+
+Или выполните шаги по отдельности:
+
+```bash
+# Генерация Prisma клиента
+npx prisma generate
+
+# Применение миграций
+npx prisma migrate deploy
+
+# Миграция данных из JSON в PostgreSQL
+npm run migrate:json-to-postgres
+```
+
+### Настройка Telegram бота
+
+1. Создайте бота в Telegram с помощью [@BotFather](https://t.me/BotFather) и получите токен.
+2. Обновите файл `.env.local` с вашим токеном и URL вашего сайта:
+
+```
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token_here
+NEXT_PUBLIC_BASE_URL=https://your-website-url.com
+```
+
+3. Для локальной разработки вы можете использовать [ngrok](https://ngrok.com/) для создания туннеля:
+
+```bash
+ngrok http 3000
+```
+
+4. Установите вебхук для вашего бота, используя URL из ngrok:
+
+```
+https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<NGROK_URL>/api/telegram
+```
+
+### Запуск проекта
+
+```bash
+# Запуск в режиме разработки
+npm run dev
+
+# Сборка проекта
+npm run build
+
+# Запуск в production режиме
+npm run start
+```
+
+## Использование Telegram бота
+
+1. Отправьте боту ссылку на место в Google Maps.
+2. Бот запросит название места.
+3. Выберите категорию места.
+4. Введите описание места или напишите "Нет".
+5. Выберите город.
+6. Бот добавит место в базу данных, и оно появится на сайте.

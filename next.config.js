@@ -1,8 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Нам не нужны внешние домены, так как мы используем только локальные изображения
+  // Добавляем внешние домены для изображений
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'instagram.fbeg2-1.fna.fbcdn.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.fbcdn.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.instagram.com',
+        port: '',
+        pathname: '/**',
+      }
+    ],
     unoptimized: false, // Оптимизируем изображения
   }
 };

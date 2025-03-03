@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        String   @id
+  name      String
+  icon      String
+  color     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  places    Place[]
+
+  @@map("categories")
+}
+
+model City {
+  id        String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  places    Place[]
+
+  @@map("cities")
+}
+
+model Place {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+  altitude    Float    @default(0)
+  categoryId  String
+  cityId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  imageUrl    String?
+  category    Category @relation(fields: [categoryId], references: [id])
+  city        City     @relation(fields: [cityId], references: [id])
+
+  @@map("places")
+}

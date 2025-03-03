@@ -1,19 +1,51 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useVenues } from "@/context/VenuesContext";
 import VenueCard from "./VenueCard";
 
 export default function VenueGrid() {
   const {
     filteredVenues,
+    venues,
     isLoading,
     error,
     selectedCategory,
+    selectedCity,
+    selectedType,
+    searchQuery,
     getCategoryInfo,
   } = useVenues();
 
   const categoryInfo = getCategoryInfo(selectedCategory);
+  
+  useEffect(() => {
+    console.log("VenueGrid - Фильтры:", {
+      категория: selectedCategory,
+      город: selectedCity,
+      тип: selectedType,
+      поиск: searchQuery
+    });
+    
+    if (venues[selectedCategory]) {
+      console.log(`Всего мест в категории "${selectedCategory}":`, 
+        venues[selectedCategory].features?.length || 0);
+    }
+    
+    console.log("Отфильтрованные места:", filteredVenues.length);
+    
+    // Если мест мало, выводим их для отладки
+    if (filteredVenues.length < 10) {
+      console.log("Список отфильтрованных мест:", 
+        filteredVenues.map(v => ({
+          название: v.properties.Name,
+          описание: v.properties.description 
+            ? v.properties.description.substring(0, 30) + (v.properties.description.length > 30 ? '...' : '')
+            : 'Нет описания'
+        }))
+      );
+    }
+  }, [venues, selectedCategory, selectedCity, selectedType, searchQuery, filteredVenues]);
 
   if (isLoading) {
     return (
@@ -83,9 +115,9 @@ export default function VenueGrid() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredVenues.map((venue, index) => (
-          <VenueCard 
-            key={`${venue.properties.Name}-${index}`} 
-            venue={venue} 
+          <VenueCard
+            key={venue.properties.id}
+            venue={venue}
             isFirst={index === 0}
           />
         ))}

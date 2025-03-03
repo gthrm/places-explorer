@@ -1,9 +1,8 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { VenueFeature } from '@/types';
-import { getVenueImageUrl, getPlaceholderImageUrl } from '@/utils/dataUtils';
+import React from "react";
+import Image from "next/image";
+import { VenueFeature } from "@/types";
 
 interface VenueImageProps {
   venue: VenueFeature;
@@ -14,34 +13,22 @@ interface VenueImageProps {
   priority?: boolean;
 }
 
-export default function VenueImage({ 
-  venue, 
-  alt, 
-  fill, 
-  sizes, 
+export default function VenueImage({
+  venue,
+  alt,
+  fill,
+  sizes,
   className,
-  priority = false 
+  priority = false,
 }: VenueImageProps) {
-  // Пытаемся использовать локальное изображение
-  const [imgSrc, setImgSrc] = useState<string>(getVenueImageUrl(venue));
-  const [imgError, setImgError] = useState<boolean>(false);
-
-  const handleError = () => {
-    if (!imgError) {
-      setImgError(true);
-      setImgSrc(getPlaceholderImageUrl());
-    }
-  };
-
   return (
     <Image
-      src={imgSrc}
+      src={venue.properties.imageUrl || "/placeholders/default.svg"}
       alt={alt}
       fill={fill}
       sizes={sizes}
       className={className}
       priority={priority}
-      onError={handleError}
     />
   );
-} 
+}

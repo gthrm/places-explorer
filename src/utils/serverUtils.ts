@@ -1,14 +1,22 @@
-import fs from 'fs';
-import path from 'path';
 import { VenueCollection, VenueFeature, VenueType, CATEGORIES } from "@/types";
+import prisma from './prismaClient';
+import { convertToGeoJson } from './dbUtils';
 
-// Серверная функция для загрузки данных из GeoJSON файла
+// Серверная функция для загрузки данных из базы данных
 export async function loadVenueData(category: string): Promise<VenueCollection> {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'data', `${category}.geojson`);
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const data = JSON.parse(fileContents) as VenueCollection;
-    return data;
+    // Получаем места по категории
+    const places = await prisma.place.findMany({
+      where: {
+        categoryId: category
+      },
+      include: {
+        category: true,
+        city: true
+      }
+    });
+    
+    return convertToGeoJson(places) as VenueCollection;
   } catch (error) {
     console.error(`Error loading ${category} data:`, error);
     return {
@@ -29,17 +37,25 @@ export async function loadAllVenueData(): Promise<{
     // Пропускаем категорию "all", так как для неё нет отдельного файла
     if (category.id === "all") {
       // Создаем пустую коллекцию для категории "all"
-      result[category.id] = {
-        type: "FeatureCollection",
-        name: "Всё",
-        features: [],
-      };
+      const allPlaces = await prisma.place.findMany({
+        include: {
+          category: true,
+          city: true
+        }
+      });
+      
+      console.log(`Loaded ${allPlaces.length} places for category "all"`);
+      
+      result[category.id] = convertToGeoJson(allPlaces) as VenueCollection;
       continue;
     }
     
-    result[category.id] = await loadVenueData(category.id);
+    const categoryData = await loadVenueData(category.id);
+    console.log(`Loaded ${categoryData.features.length} places for category "${category.id}"`);
+    result[category.id] = categoryData;
   }
 
+  console.log("Total categories loaded:", Object.keys(result).length);
   return result;
 }
 
@@ -58,17 +74,23 @@ export function extractVenueTypes(venues: VenueFeature[]): VenueType[] {
         type = "Веб-сайт";
       }
       // If description contains specific keywords
-      else if (description.includes("кальян")) {
+      else if (description.toLowerCase().includes("кальян")) {
         type = "Кальянная";
       } else if (
-        description.includes("коктел") ||
-        description.includes("коктейл")
+        description.toLowerCase().includes("коктел") ||
+        description.toLowerCase().includes("коктейл")
       ) {
         type = "Коктейль-бар";
-      } else if (description.includes("вин")) {
+      } else if (description.toLowerCase().includes("вин")) {
         type = "Винный бар";
-      } else if (description.includes("ресторан")) {
+      } else if (description.toLowerCase().includes("ресторан")) {
         type = "Ресторан";
+      } else if (description.toLowerCase().includes("кафе")) {
+        type = "Кафе";
+      } else if (description.toLowerCase().includes("паб")) {
+        type = "Паб";
+      } else if (description.toLowerCase().includes("пиво") || description.toLowerCase().includes("пива")) {
+        type = "Пивной бар";
       } else if (description.length > 30) {
         // If description is too long, truncate it
         type = description.substring(0, 30) + "...";

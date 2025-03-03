@@ -9,9 +9,15 @@ export default function CategoryFilter() {
 
   // Функция для подсчета общего количества заведений
   const getTotalVenuesCount = () => {
+    // Если есть категория "all", используем её количество
+    if (venues["all"] && venues["all"].features) {
+      return venues["all"].features.length;
+    }
+    
+    // Иначе суммируем количество записей из всех категорий, кроме "all"
     let total = 0;
-    Object.values(venues).forEach((collection) => {
-      if (collection && collection.features) {
+    Object.entries(venues).forEach(([categoryId, collection]) => {
+      if (categoryId !== "all" && collection && collection.features) {
         total += collection.features.length;
       }
     });
