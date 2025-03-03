@@ -8,8 +8,19 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: "Места - Каталог заведений",
-  description: "Каталог заведений с фильтрацией и поиском",
+  title: "Сербия Гид - Сборник мест от cdROma",
+  description: "Интерактивный путеводитель по интересным местам Сербии: бары, рестораны, магазины и другие заведения в Белграде, Нови-Саде и других городах",
+  openGraph: {
+    title: "Сербия Гид - Сборник мест от cdROma",
+    description: "Интерактивный путеводитель по интересным местам Сербии",
+    type: "website",
+    locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Сербия Гид - Сборник мест от cdROma",
+    description: "Интерактивный путеводитель по интересным местам Сербии",
+  },
 };
 
 export default function RootLayout({

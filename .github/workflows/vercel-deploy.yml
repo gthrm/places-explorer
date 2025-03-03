@@ -1,4 +1,4 @@
-name: Deploy to Vercel
+name: Деплой сборника мест от cdROma в Сербии
 
 on:
   push:
@@ -8,25 +8,26 @@ on:
 
 jobs:
   deploy:
+    name: Сборка и публикация на Vercel
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Получение кода из репозитория
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Настройка Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
-      - name: Install dependencies
+      - name: Установка зависимостей
         run: npm ci
 
-      - name: Build project
+      - name: Сборка проекта
         run: npm run build
 
-      - name: Deploy to Vercel
+      - name: Публикация на Vercel
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

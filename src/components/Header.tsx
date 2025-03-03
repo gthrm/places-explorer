@@ -10,8 +10,9 @@ export default function Header() {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-blue-600 mr-2">🌍</span>
-              <span className="text-xl font-semibold text-gray-900">Места</span>
+              <span className="text-2xl font-bold text-blue-600 mr-2">🇷🇸</span>
+              <span className="text-xl font-semibold text-gray-900">Сербия Гид</span>
+              <span className="text-sm text-gray-500 ml-2">от cdROma</span>
             </Link>
           </div>
           <div className="flex items-center space-x-4">

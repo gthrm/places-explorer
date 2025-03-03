@@ -1,7 +1,8 @@
 {
-  "name": "places-explorer",
+  "name": "serbia-guide",
   "version": "0.1.0",
   "private": true,
+  "description": "Интерактивный путеводитель по интересным местам Сербии от cdROma",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
