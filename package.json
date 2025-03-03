@@ -5,7 +5,7 @@
   "description": "Интерактивный путеводитель по интересным местам Сербии от cdROma",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "migrate:json-to-postgres": "ts-node --project tsconfig.scripts.json scripts/migrations/json-to-postgres.ts",
