@@ -36,6 +36,13 @@ interface VenuesProviderProps {
   initialData?: { [key: string]: VenueCollection };
 }
 
+// Определение типа для обработанных данных заведений для поиска
+interface SearchableVenue {
+  feature: VenueFeature;
+  nameLower: string;
+  descriptionLower: string | null;
+}
+
 const VenuesContext = createContext<VenuesContextType | undefined>(undefined);
 
 export function VenuesProvider({ children, initialData }: VenuesProviderProps) {
@@ -103,74 +110,64 @@ export function VenuesProvider({ children, initialData }: VenuesProviderProps) {
     setSearchableVenues(processed);
   }, [venues]);
 
+  // Функция для проверки соответствия заведения выбранному типу
+  const matchesVenueType = (item: SearchableVenue, selectedType: string): boolean => {
+    // Проверяем, совпадает ли categoryId с выбранным типом
+    return item.feature.properties.categoryId === selectedType;
+  };
+
   // Filter venues based on selected filters
   const filteredVenues = React.useMemo(() => {
-    // Если выбрана категория "Всё", объединяем все заведения из всех категорий
+    // Если выбрана категория "Всё", используем данные из категории "all"
     if (selectedCategory === "all") {
-      // Сначала объединяем все заведения
-      let allSearchableVenues: {
-        feature: VenueFeature;
-        nameLower: string;
-        descriptionLower: string | null;
-      }[] = [];
-      
-      // Объединяем заведения из всех категорий
-      Object.values(searchableVenues).forEach((venueArray) => {
-        if (venueArray && venueArray.length > 0) {
-          allSearchableVenues = [...allSearchableVenues, ...venueArray];
-        }
-      });
-      
-      // Применяем фильтры последовательно, начиная с самых быстрых
-      let filtered = allSearchableVenues;
-      
-      // Filter by city (быстрый фильтр)
-      if (selectedCity) {
-        filtered = filtered.filter((item) =>
-          item.feature.properties.Name.startsWith(selectedCity)
-        );
-      }
-
-      // Filter by type (средний фильтр)
-      if (selectedType) {
-        filtered = filtered.filter((item) => {
-          const description = item.feature.properties.description;
-          if (!description) return selectedType === "Без описания";
-
-          if (selectedType === "Веб-сайт") {
-            return description.startsWith("http");
-          }
-
-          return item.descriptionLower ? 
-            item.descriptionLower.includes(selectedType.toLowerCase()) : false;
-        });
-      }
-
-      // Filter by search query (самый медленный фильтр)
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase();
+      // Используем данные из категории "all", которые уже содержат все места
+      if (searchableVenues["all"] && searchableVenues["all"].length > 0) {
+        let filtered = searchableVenues["all"];
         
-        // Оптимизация: если запрос короткий, используем более строгое соответствие
-        if (query.length <= 2) {
-          filtered = filtered.filter(
-            (item) =>
-              item.nameLower.includes(` ${query}`) ||
-              item.nameLower.startsWith(query) ||
-              (item.descriptionLower &&
-                item.descriptionLower.includes(` ${query}`))
-          );
-        } else {
-          filtered = filtered.filter(
-            (item) =>
-              item.nameLower.includes(query) ||
-              (item.descriptionLower &&
-                item.descriptionLower.includes(query))
-          );
+        // Filter by city (быстрый фильтр)
+        if (selectedCity) {
+          filtered = filtered.filter((item) => {
+            // Проверяем, начинается ли название с выбранного города
+            // или содержит ли оно код города в формате "BG", "NS" и т.д.
+            const nameParts = item.feature.properties.Name.split(" ");
+            return nameParts[0] === selectedCity || 
+                   item.nameLower.includes(` ${selectedCity.toLowerCase()}`) ||
+                   item.nameLower.includes(`(${selectedCity.toLowerCase()})`);
+          });
         }
+
+        // Filter by type (средний фильтр)
+        if (selectedType) {
+          filtered = filtered.filter(item => matchesVenueType(item, selectedType));
+        }
+
+        // Filter by search query (самый медленный фильтр)
+        if (searchQuery) {
+          const query = searchQuery.toLowerCase();
+          
+          // Оптимизация: если запрос короткий, используем более строгое соответствие
+          if (query.length <= 2) {
+            filtered = filtered.filter(
+              (item) =>
+                item.nameLower.includes(query) || // Изменено: ищем в любом месте названия
+                (item.descriptionLower &&
+                  item.descriptionLower.includes(query))
+            );
+          } else {
+            filtered = filtered.filter(
+              (item) =>
+                item.nameLower.includes(query) ||
+                (item.descriptionLower &&
+                  item.descriptionLower.includes(query))
+            );
+          }
+        }
+        
+        // Возвращаем только оригинальные объекты VenueFeature
+        return filtered.map(item => item.feature);
       }
       
-      // Возвращаем только оригинальные объекты VenueFeature
-      return filtered.map(item => item.feature);
+      return [];
     }
     
     // Для остальных категорий используем существующую логику, но с оптимизациями
@@ -180,24 +177,19 @@ export function VenuesProvider({ children, initialData }: VenuesProviderProps) {
 
     // Filter by city (быстрый фильтр)
     if (selectedCity) {
-      filtered = filtered.filter((item) =>
-        item.feature.properties.Name.startsWith(selectedCity)
-      );
+      filtered = filtered.filter((item) => {
+        // Проверяем, начинается ли название с выбранного города
+        // или содержит ли оно код города в формате "BG", "NS" и т.д.
+        const nameParts = item.feature.properties.Name.split(" ");
+        return nameParts[0] === selectedCity || 
+               item.nameLower.includes(` ${selectedCity.toLowerCase()}`) ||
+               item.nameLower.includes(`(${selectedCity.toLowerCase()})`);
+      });
     }
 
     // Filter by type (средний фильтр)
     if (selectedType) {
-      filtered = filtered.filter((item) => {
-        const description = item.feature.properties.description;
-        if (!description) return selectedType === "Без описания";
-
-        if (selectedType === "Веб-сайт") {
-          return description.startsWith("http");
-        }
-
-        return item.descriptionLower ? 
-          item.descriptionLower.includes(selectedType.toLowerCase()) : false;
-      });
+      filtered = filtered.filter(item => matchesVenueType(item, selectedType));
     }
 
     // Filter by search query (самый медленный фильтр)
@@ -208,10 +200,9 @@ export function VenuesProvider({ children, initialData }: VenuesProviderProps) {
       if (query.length <= 2) {
         filtered = filtered.filter(
           (item) =>
-            item.nameLower.includes(` ${query}`) ||
-            item.nameLower.startsWith(query) ||
+            item.nameLower.includes(query) || // Изменено: ищем в любом месте названия
             (item.descriptionLower &&
-              item.descriptionLower.includes(` ${query}`))
+              item.descriptionLower.includes(query))
         );
       } else {
         filtered = filtered.filter(

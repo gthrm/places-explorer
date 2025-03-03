@@ -47,14 +47,10 @@ export default function FilterBar() {
 
   // Extract venue types from the current category
   const venueTypes = useMemo(() => {
-    // Если выбрана категория "all", используем все заведения
+    // Если выбрана категория "all", используем только данные из категории "all"
     if (selectedCategory === "all") {
-      // Собираем все заведения из всех категорий
-      const allFeatures = Object.values(venues)
-        .filter(collection => collection && collection.features)
-        .flatMap(collection => collection.features);
-      
-      return extractVenueTypes(allFeatures);
+      if (!venues["all"] || !venues["all"].features) return [];
+      return extractVenueTypes(venues["all"].features);
     }
     
     // Для остальных категорий используем существующую логику
@@ -64,14 +60,10 @@ export default function FilterBar() {
 
   // Extract cities from the current category
   const cities = useMemo(() => {
-    // Если выбрана категория "all", используем все заведения
+    // Если выбрана категория "all", используем только данные из категории "all"
     if (selectedCategory === "all") {
-      // Собираем все заведения из всех категорий
-      const allFeatures = Object.values(venues)
-        .filter(collection => collection && collection.features)
-        .flatMap(collection => collection.features);
-      
-      return extractCities(allFeatures);
+      if (!venues["all"] || !venues["all"].features) return {};
+      return extractCities(venues["all"].features);
     }
     
     // Для остальных категорий используем существующую логику

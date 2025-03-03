@@ -1,6 +1,9 @@
 export interface VenueProperties {
+  id: string;
   Name: string;
   description: string | null;
+  imageUrl: string | null;
+  categoryId: string;
 }
 
 export interface VenueGeometry {
@@ -9,6 +12,7 @@ export interface VenueGeometry {
 }
 
 export interface VenueFeature {
+  id: string;
   type: string;
   properties: VenueProperties;
   geometry: VenueGeometry;
