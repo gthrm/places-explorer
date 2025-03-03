@@ -26,6 +26,11 @@ jobs:
 
       - name: Сборка проекта
         run: npm run build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NODE_ENV: "production"
 
       - name: Публикация на Vercel
         uses: amondnet/vercel-action@v25
