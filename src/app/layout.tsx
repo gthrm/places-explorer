@@ -4,12 +4,14 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Сербия Гид - Сборник мест от cdROma",
-  description: "Интерактивный путеводитель по интересным местам Сербии: бары, рестораны, магазины и другие заведения в Белграде, Нови-Саде и других городах",
+  description:
+    "Интерактивный путеводитель по интересным местам Сербии: бары, рестораны, магазины и другие заведения в Белграде, Нови-Саде и других городах",
   openGraph: {
     title: "Сербия Гид - Сборник мест от cdROma",
     description: "Интерактивный путеводитель по интересным местам Сербии",
@@ -37,6 +39,7 @@ export default function RootLayout({
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
               {children}
               <Analytics />
+              <SpeedInsights />
             </div>
           </main>
           <Footer />
