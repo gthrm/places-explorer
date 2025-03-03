@@ -33,7 +33,7 @@ interface VenueCollection {
 const CATEGORIES = [
   { id: "all", name: "Всё", icon: "🌐", color: "bg-emerald-500" },
   { id: "Бар", name: "Бары", icon: "🍸", color: "bg-purple-500" },
-  { id: "Еда", name: "Рестораны", icon: "🍽️", color: "bg-red-500" },
+  { id: "Еда", name: "Еда", icon: "🍽️", color: "bg-red-500" },
   { id: "Магазины", name: "Магазины", icon: "🛒", color: "bg-blue-500" },
   { id: "Красота", name: "Красота", icon: "💇", color: "bg-pink-500" },
   { id: "Одежда", name: "Одежда", icon: "👕", color: "bg-green-500" },
