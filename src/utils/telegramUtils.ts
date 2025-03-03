@@ -32,11 +32,16 @@ export async function addPlaceToGeoJson(
     const geoJson = JSON.parse(fileContent) as VenueCollection;
     
     // Создаем новую запись
+    const newId = Math.random().toString(36).substring(2, 15); // Генерируем случайный ID
     const newFeature: VenueFeature = {
+      id: newId,
       type: "Feature",
       properties: {
+        id: newId,
         Name: `${city} ${name}`,
-        description
+        description,
+        imageUrl: null,
+        categoryId: category
       },
       geometry: {
         type: "Point",
