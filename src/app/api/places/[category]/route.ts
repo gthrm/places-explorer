@@ -2,19 +2,18 @@ import { NextResponse } from 'next/server';
 import { getPlacesByCategory, convertToGeoJson } from '@/utils/dbUtils';
 import type { NextRequest } from 'next/server';
 
-interface RouteParams {
-  params: {
-    category: string;
-  };
+// Функция для извлечения параметра category из URL
+function extractCategoryFromUrl(url: string): string {
+  const segments = url.split('/');
+  return segments[segments.length - 1];
 }
 
 // Обработчик GET-запросов для получения мест по категории
-export async function GET(
-  request: NextRequest,
-  { params }: RouteParams
-) {
+export async function GET(request: NextRequest) {
   try {
-    const { category } = params;
+    // Извлекаем параметр category из URL
+    const { pathname } = request.nextUrl;
+    const category = extractCategoryFromUrl(pathname);
     
     // Если категория "all", возвращаем все места
     if (category === 'all') {
@@ -33,7 +32,7 @@ export async function GET(
     
     return NextResponse.json(geoJson);
   } catch (error) {
-    console.error(`Ошибка при получении мест категории ${params.category}:`, error);
+    console.error(`Ошибка при получении мест:`, error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 } 
