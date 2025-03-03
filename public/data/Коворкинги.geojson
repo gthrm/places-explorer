@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "Офисы",
+"name": "Коворкинги",
 "features": [
 { "type": "Feature", "properties": { "Name": "BG SvetloSpace ", "description": "Кооворкинг" }, "geometry": { "type": "Point", "coordinates": [ 20.4603366, 44.8187217, 0.0 ] } },
 { "type": "Feature", "properties": { "Name": "BG Adaptacija Space", "description": null }, "geometry": { "type": "Point", "coordinates": [ 20.4702422, 44.8175709, 0.0 ] } },

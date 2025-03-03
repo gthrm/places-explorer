@@ -35,7 +35,7 @@ export const CATEGORIES: CategoryInfo[] = [
   { id: "Красота", name: "Красота", icon: "💇", color: "bg-pink-500" },
   { id: "Одежда", name: "Одежда", icon: "👕", color: "bg-green-500" },
   { id: "Техника", name: "Техника", icon: "📱", color: "bg-gray-500" },
-  { id: "Офисы", name: "Офисы", icon: "🏢", color: "bg-yellow-500" },
+  { id: "Коворкинги", name: "Коворкинги", icon: "🏢", color: "bg-yellow-500" },
   { id: "Курсы", name: "Курсы", icon: "📚", color: "bg-indigo-500" },
   {
     id: "Развлечения",
