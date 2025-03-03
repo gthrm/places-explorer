@@ -5,6 +5,9 @@ import VenueGrid from "@/components/VenueGrid";
 import { loadAllVenueData } from "@/utils/serverUtils";
 import { VenuesProvider } from "@/context/VenuesContext";
 
+// Обновлять страницу каждый час (3600 секунд)
+export const revalidate = 3600;
+
 // Это серверный компонент
 export default async function Home() {
   // Загружаем данные на сервере
