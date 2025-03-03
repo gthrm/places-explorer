@@ -67,26 +67,69 @@ export async function addPlaceToGeoJson(
  */
 export function extractCoordinatesFromUrl(url: string): [number, number] | null {
   try {
-    // Пытаемся извлечь координаты из разных форматов ссылок Google Maps
-    const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
-    const match = url.match(regex);
+    console.log('Извлечение координат из URL:', url);
     
-    if (match && match.length >= 3) {
-      const lat = parseFloat(match[1]);
-      const lng = parseFloat(match[2]);
+    // Формат 1: Координаты в URL после @
+    // Пример: https://www.google.com/maps/place/.../@44.8142752,20.4588704,17z/...
+    const atRegex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+    const atMatch = url.match(atRegex);
+    
+    if (atMatch && atMatch.length >= 3) {
+      const lat = parseFloat(atMatch[1]);
+      const lng = parseFloat(atMatch[2]);
+      console.log(`Найдены координаты (формат @): [${lng}, ${lat}]`);
       return [lng, lat]; // GeoJSON использует формат [lng, lat]
     }
     
-    // Если не удалось извлечь из формата @lat,lng, пробуем другие форматы
-    const queryRegex = /[?&]q=(-?\d+\.\d+),(-?\d+\.\d+)/;
-    const queryMatch = url.match(queryRegex);
+    // Формат 2: Координаты в параметре q=
+    // Пример: https://www.google.com/maps?q=44.8142752,20.4588704
+    const qRegex = /[?&]q=(-?\d+\.\d+),(-?\d+\.\d+)/;
+    const qMatch = url.match(qRegex);
     
-    if (queryMatch && queryMatch.length >= 3) {
-      const lat = parseFloat(queryMatch[1]);
-      const lng = parseFloat(queryMatch[2]);
+    if (qMatch && qMatch.length >= 3) {
+      const lat = parseFloat(qMatch[1]);
+      const lng = parseFloat(qMatch[2]);
+      console.log(`Найдены координаты (формат q=): [${lng}, ${lat}]`);
       return [lng, lat];
     }
     
+    // Формат 3: Координаты в параметрах !3d и !4d
+    // Пример: https://www.google.com/maps/place/...!3d44.8142752!4d20.4588704!...
+    const dRegex = /!3d(-?\d+\.\d+).*?!4d(-?\d+\.\d+)/;
+    const dMatch = url.match(dRegex);
+    
+    if (dMatch && dMatch.length >= 3) {
+      const lat = parseFloat(dMatch[1]);
+      const lng = parseFloat(dMatch[2]);
+      console.log(`Найдены координаты (формат !3d!4d): [${lng}, ${lat}]`);
+      return [lng, lat];
+    }
+    
+    // Формат 4: Координаты в конце URL после последнего /
+    // Пример: https://www.google.com/maps/place/.../44.8142752,20.4588704
+    const slashRegex = /\/(-?\d+\.\d+),(-?\d+\.\d+)(?:[,/]|$)/;
+    const slashMatch = url.match(slashRegex);
+    
+    if (slashMatch && slashMatch.length >= 3) {
+      const lat = parseFloat(slashMatch[1]);
+      const lng = parseFloat(slashMatch[2]);
+      console.log(`Найдены координаты (формат /lat,lng): [${lng}, ${lat}]`);
+      return [lng, lat];
+    }
+    
+    // Формат 5: Координаты в параметрах 8m2!3d и !4d
+    // Пример: https://www.google.com/maps/place/...!8m2!3d44.8142752!4d20.4588704!...
+    const m2Regex = /!8m2!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+    const m2Match = url.match(m2Regex);
+    
+    if (m2Match && m2Match.length >= 3) {
+      const lat = parseFloat(m2Match[1]);
+      const lng = parseFloat(m2Match[2]);
+      console.log(`Найдены координаты (формат !8m2!3d!4d): [${lng}, ${lat}]`);
+      return [lng, lat];
+    }
+    
+    console.log('Не удалось извлечь координаты из URL');
     return null;
   } catch (error) {
     console.error('Ошибка при извлечении координат:', error);
