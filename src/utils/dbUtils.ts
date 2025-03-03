@@ -73,12 +73,10 @@ export async function addPlace(
     const existingPlace = await prisma.place.findFirst({
       where: {
         latitude: {
-          equals: latitude,
-          mode: 'insensitive'
+          equals: latitude
         },
         longitude: {
-          equals: longitude,
-          mode: 'insensitive'
+          equals: longitude
         }
       }
     });
